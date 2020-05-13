@@ -1,5 +1,5 @@
 # Desc
 
-- clones repos from bitbucket recursively
+- collect repos URI from bitbucket recursively
 - creates a dir of a project
-- clones repo under respective project dir it relates to for convenience purpose
+- clones each repo under respective project dir for convenience purpose
