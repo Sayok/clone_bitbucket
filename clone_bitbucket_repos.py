@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 import time
 from urllib.parse import urljoin
@@ -13,12 +14,18 @@ root_path = os.path.dirname(__file__)
 repos_dir = os.path.join(root_path, "repos")
 
 
-# export BB_URL=url BB_USERNAME=username BB_PASSWORD=password
 base_url = os.environ.get("BB_URL")
 credentials = {
     "username": os.environ.get("BB_USERNAME"),
     "password": os.environ.get("BB_PASSWORD")
 }
+
+if not base_url or None in credentials.values():
+    logging.error(
+        "Please set credentials: url, username and password \n"
+        "an example: export BB_URL=url BB_USERNAME=username BB_PASSWORD=password"
+                )
+    sys.exit(1)
 
 
 class BitbucketPage:
